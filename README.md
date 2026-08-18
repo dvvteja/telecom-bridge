@@ -50,7 +50,7 @@ telecom-bridge/
 
 | Tool    | Version  | Notes                              |
 |---------|----------|------------------------------------|
-| Java    | 21+      | Eclipse Temurin recommended        |
+| Java    | 17+      | Eclipse Temurin recommended        |
 | Maven   | 3.9+     | `mvn --version`                    |
 | Docker  | 24+      | For containerised deployment       |
 | Docker Compose | 2.x | `docker compose version`      |
