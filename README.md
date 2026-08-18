@@ -2,7 +2,7 @@
 
 > **High-performance REST-to-Diameter Gateway** for the Ro/Gy Credit Control interface (RFC 4006 / RFC 6733).
 
-[![Java](https://img.shields.io/badge/Java-21-orange)](https://adoptium.net)
+[![Java](https://img.shields.io/badge/Java-17-orange)](https://adoptium.net)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.5-brightgreen)](https://spring.io/projects/spring-boot)
 [![Netty](https://img.shields.io/badge/Netty-4.1.110-blue)](https://netty.io)
 
