@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.telecombridge</groupId>
+        <artifactId>telecom-bridge</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <artifactId>load-test</artifactId>
+    <name>Telecom-Bridge Load Test (Gatling)</name>
+    <description>Gatling load test targeting 100 TPS for 500K transactions</description>
+
+    <properties>
+        <scala.version>2.13.14</scala.version>
+        <gatling.version>3.11.3</gatling.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.gatling.highcharts</groupId>
+            <artifactId>gatling-charts-highcharts</artifactId>
+            <version>${gatling.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <sourceDirectory>src/test/scala</sourceDirectory>
+        <plugins>
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+                <version>4.9.2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <scalaVersion>${scala.version}</scalaVersion>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>io.gatling</groupId>
+                <artifactId>gatling-maven-plugin</artifactId>
+                <version>4.9.6</version>
+                <configuration>
+                    <simulationClass>com.telecombridge.loadtest.TelecomBridgeSimulation</simulationClass>
+                    <resultsFolder>${project.build.directory}/gatling-results</resultsFolder>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

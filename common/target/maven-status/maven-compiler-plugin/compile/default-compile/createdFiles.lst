@@ -1,0 +1,7 @@
+com\telecombridge\common\diameter\CommandCode.class
+com\telecombridge\common\diameter\AvpCode.class
+com\telecombridge\common\diameter\DiameterMessage.class
+com\telecombridge\common\diameter\DiameterMessageFactory.class
+com\telecombridge\common\diameter\Avp.class
+com\telecombridge\common\diameter\DiameterCodec.class
+com\telecombridge\common\diameter\DiameterMessage$Builder.class

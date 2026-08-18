@@ -1,0 +1,60 @@
+server:
+  port: 8080
+  tomcat:
+    threads:
+      max: 200
+      min-spare: 20
+    accept-count: 100
+    connection-timeout: 10000ms
+  # Enable async support for CompletableFuture responses
+  servlet:
+    async:
+      timeout: 10000
+
+spring:
+  application:
+    name: telecom-bridge-gateway
+  jackson:
+    default-property-inclusion: non_null
+    serialization:
+      write-dates-as-timestamps: false
+
+# ── Diameter Client Configuration ─────────────────────────────────────────────
+diameter:
+  server-host: ${DIAMETER_HOST:localhost}
+  server-port: ${DIAMETER_PORT:3868}
+  origin-host: gateway.telecombridge.local
+  origin-realm: telecombridge.local
+  destination-host: simulator.telecombridge.local
+  destination-realm: telecombridge.local
+  # Timeout for a CCR → CCA round-trip (ms)
+  request-timeout-ms: 5000
+  # DWR keepalive interval (seconds)
+  watchdog-interval-seconds: 30
+  # Delay between reconnect attempts (seconds)
+  reconnect-delay-seconds: 5
+  # Netty I/O threads (0 = 2×CPU cores)
+  io-threads: 0
+
+# ── Actuator ──────────────────────────────────────────────────────────────────
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    tags:
+      application: ${spring.application.name}
+
+# ── Logging ───────────────────────────────────────────────────────────────────
+logging:
+  level:
+    root: INFO
+    com.telecombridge: DEBUG
+    io.netty: WARN
+    org.springframework: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"

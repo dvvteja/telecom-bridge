@@ -1,0 +1,5 @@
+com\telecombridge\simulator\DiameterFrameDecoder.class
+com\telecombridge\simulator\SimulatorMain.class
+com\telecombridge\simulator\DiameterServerHandler.class
+com\telecombridge\simulator\DiameterSimulator$1.class
+com\telecombridge\simulator\DiameterSimulator.class

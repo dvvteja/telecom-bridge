@@ -1,0 +1,66 @@
+{
+  "groups": [
+    {
+      "name": "diameter",
+      "type": "com.telecombridge.gateway.diameter.DiameterClientConfig",
+      "sourceType": "com.telecombridge.gateway.diameter.DiameterClientConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "diameter.destination-host",
+      "type": "java.lang.String",
+      "sourceType": "com.telecombridge.gateway.diameter.DiameterClientConfig"
+    },
+    {
+      "name": "diameter.destination-realm",
+      "type": "java.lang.String",
+      "sourceType": "com.telecombridge.gateway.diameter.DiameterClientConfig"
+    },
+    {
+      "name": "diameter.io-threads",
+      "type": "java.lang.Integer",
+      "description": "Number of Netty I\/O threads (0 = 2×CPU).",
+      "sourceType": "com.telecombridge.gateway.diameter.DiameterClientConfig"
+    },
+    {
+      "name": "diameter.origin-host",
+      "type": "java.lang.String",
+      "sourceType": "com.telecombridge.gateway.diameter.DiameterClientConfig"
+    },
+    {
+      "name": "diameter.origin-realm",
+      "type": "java.lang.String",
+      "sourceType": "com.telecombridge.gateway.diameter.DiameterClientConfig"
+    },
+    {
+      "name": "diameter.reconnect-delay-seconds",
+      "type": "java.lang.Integer",
+      "description": "Delay between reconnect attempts in seconds.",
+      "sourceType": "com.telecombridge.gateway.diameter.DiameterClientConfig"
+    },
+    {
+      "name": "diameter.request-timeout-ms",
+      "type": "java.lang.Long",
+      "description": "How long to wait for a CCA before timing out (ms).",
+      "sourceType": "com.telecombridge.gateway.diameter.DiameterClientConfig"
+    },
+    {
+      "name": "diameter.server-host",
+      "type": "java.lang.String",
+      "sourceType": "com.telecombridge.gateway.diameter.DiameterClientConfig"
+    },
+    {
+      "name": "diameter.server-port",
+      "type": "java.lang.Integer",
+      "sourceType": "com.telecombridge.gateway.diameter.DiameterClientConfig"
+    },
+    {
+      "name": "diameter.watchdog-interval-seconds",
+      "type": "java.lang.Integer",
+      "description": "DWR interval in seconds.",
+      "sourceType": "com.telecombridge.gateway.diameter.DiameterClientConfig"
+    }
+  ],
+  "hints": []
+}
