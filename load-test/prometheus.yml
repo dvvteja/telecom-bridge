@@ -1,0 +1,19 @@
+global:
+  scrape_interval:     5s     # fine-grained for load test
+  evaluation_interval: 5s
+
+scrape_configs:
+  - job_name: 'gateway-quarkus'
+    static_configs:
+      - targets: ['gateway-quarkus:9000']
+    metrics_path: /q/metrics
+
+  - job_name: 'gateway-spring'
+    static_configs:
+      - targets: ['gateway:8080']
+    metrics_path: /actuator/prometheus
+
+  - job_name: 'simulator'
+    static_configs:
+      - targets: ['simulator:8080']
+    metrics_path: /actuator/prometheus

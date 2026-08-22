@@ -51,8 +51,25 @@
                 <artifactId>gatling-maven-plugin</artifactId>
                 <version>4.9.6</version>
                 <configuration>
-                    <simulationClass>com.telecombridge.loadtest.TelecomBridgeSimulation</simulationClass>
-                    <resultsFolder>${project.build.directory}/gatling-results</resultsFolder>
+                    <!-- Default to HighVolumeSimulation; override with -Dgatling.simulationClass -->
+                    <simulationClass>com.telecombridge.gatling.HighVolumeSimulation</simulationClass>
+                    <resultsFolder>${project.build.directory}/gatling</resultsFolder>
+                    <!-- Pass system properties through to the simulation -->
+                    <jvmArgs>
+                        <!-- Gatling runner heap: needs enough for 500K result records -->
+                        <jvmArg>-Xms256m</jvmArg>
+                        <jvmArg>-Xmx1g</jvmArg>
+                        <jvmArg>-XX:+UseG1GC</jvmArg>
+                        <!-- Open module access needed by Gatling internals -->
+                        <jvmArg>--add-opens=java.base/java.lang=ALL-UNNAMED</jvmArg>
+                        <jvmArg>--add-opens=java.base/java.util=ALL-UNNAMED</jvmArg>
+                        <!-- System property passthrough -->
+                        <jvmArg>-DbaseUrl=${baseUrl}</jvmArg>
+                        <jvmArg>-DtotalTps=${totalTps}</jvmArg>
+                        <jvmArg>-DtotalTx=${totalTx}</jvmArg>
+                        <jvmArg>-DrampSeconds=${rampSeconds}</jvmArg>
+                        <jvmArg>-DmixAccountPct=${mixAccountPct}</jvmArg>
+                    </jvmArgs>
                 </configuration>
             </plugin>
         </plugins>

@@ -16,6 +16,7 @@
         <module>common</module>
         <module>simulator</module>
         <module>gateway</module>
+        <module>gateway-quarkus</module>
         <module>load-test</module>
     </modules>
 
@@ -25,12 +26,21 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.boot.version>3.2.5</spring.boot.version>
+        <quarkus.platform.version>3.10.1</quarkus.platform.version>
+        <jdiameter.version>1.7.2.1-125</jdiameter.version>
         <netty.version>4.1.110.Final</netty.version>
         <slf4j.version>2.0.7</slf4j.version>
         <logback.version>1.4.14</logback.version>
         <junit.version>5.10.2</junit.version>
         <gatling.version>3.11.3</gatling.version>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>restcomm-public</id>
+            <url>https://oss.sonatype.org/content/groups/public</url>
+        </repository>
+    </repositories>
 
     <dependencyManagement>
         <dependencies>
@@ -39,6 +49,15 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Quarkus BOM -->
+            <dependency>
+                <groupId>io.quarkus.platform</groupId>
+                <artifactId>quarkus-bom</artifactId>
+                <version>${quarkus.platform.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

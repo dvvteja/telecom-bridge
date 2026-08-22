@@ -1,0 +1,127 @@
+version: "3.9"
+# docker compose -f docker-compose.yml -f docker-compose.load-test.yml up
+# Overlay for 100 TPS / 500K transaction load test.
+# Increases resource limits, enables GC logging, and adds a Gatling runner service.
+
+services:
+
+  # ── Scale simulator for load test ────────────────────────────────────────
+  simulator:
+    mem_limit: 512m       # 2× normal — handles 100 concurrent inbound Diameter sessions
+    cpus: "2.0"
+    environment:
+      JAVA_OPTS: >-
+        -XX:+UseContainerSupport
+        -XX:MaxRAMPercentage=70.0
+        -XX:+UseG1GC
+        -XX:G1HeapRegionSize=8m
+        -Xlog:gc*:file=/tmp/simulator-gc.log:time,uptime,level:filecount=5,filesize=20m
+
+  # ── Scale Spring Boot gateway for load test ───────────────────────────────
+  gateway:
+    mem_limit: 768m
+    cpus: "2.0"
+    environment:
+      JAVA_OPTS: >-
+        -XX:+UseContainerSupport
+        -XX:MaxRAMPercentage=75.0
+        -XX:+UseG1GC
+        -XX:G1HeapRegionSize=8m
+        -XX:MaxGCPauseMillis=100
+        -Xlog:gc*:file=/tmp/gateway-gc.log:time,uptime,level:filecount=5,filesize=20m
+
+  # ── Scale Quarkus+JDiameter gateway for load test ────────────────────────
+  # At 100 TPS with 1s backend, needs ~100 concurrent connections.
+  gateway-quarkus:
+    mem_limit: 384m       # still 50% less than Spring Boot even under load
+    cpus: "2.0"
+    environment:
+      JAVA_OPTS: >-
+        -XX:+UseContainerSupport
+        -XX:MaxRAMPercentage=70.0
+        -XX:+UseG1GC
+        -XX:G1HeapRegionSize=4m
+        -XX:MaxGCPauseMillis=100
+        -Djava.security.egd=file:/dev/./urandom
+        -Xlog:gc*:file=/tmp/quarkus-gc.log:time,uptime,level:filecount=5,filesize=20m
+      # Quarkus thread pool tuning for 100 TPS sustained
+      QUARKUS_THREAD_POOL_MAX_THREADS: "200"
+      QUARKUS_HTTP_IO_THREADS: "4"
+    # Extend health probe timeouts for load test startup
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:9000/q/health/ready"]
+      interval: 15s
+      timeout: 10s
+      retries: 8
+      start_period: 40s
+
+  # ── Gatling load test runner ──────────────────────────────────────────────
+  # Runs the HighVolumeSimulation inside Docker alongside the SUT.
+  # Reports are written to ./load-test/target/gatling/ on the host.
+  gatling-runner:
+    image: eclipse-temurin:17-jdk-alpine
+    container_name: gatling-load-test
+    working_dir: /app
+    volumes:
+      - ./load-test:/app
+      - ./load-test/target/gatling:/app/target/gatling  # results on host
+      - ~/.m2:/root/.m2                                  # Maven cache
+    environment:
+      BASE_URL: "http://gateway-quarkus:8080"
+      TOTAL_TPS: "100"
+      TOTAL_TX: "500000"
+      RAMP_SECONDS: "120"
+      MIX_ACCOUNT_PCT: "70"
+    command: >
+      sh -c "
+        apk add --no-cache maven 2>/dev/null || true;
+        mvn gatling:test
+          -Dgatling.simulationClass=com.telecombridge.gatling.HighVolumeSimulation
+          -DbaseUrl=$$BASE_URL
+          -DtotalTps=$$TOTAL_TPS
+          -DtotalTx=$$TOTAL_TX
+          -DrampSeconds=$$RAMP_SECONDS
+          -DmixAccountPct=$$MIX_ACCOUNT_PCT
+          --no-transfer-progress
+      "
+    depends_on:
+      gateway-quarkus:
+        condition: service_healthy
+      simulator:
+        condition: service_healthy
+    networks:
+      - diameter-net
+    profiles:
+      - load-test    # only started with: docker compose --profile load-test up
+
+  # ── Prometheus (metrics collection during load test) ──────────────────────
+  prometheus:
+    image: prom/prometheus:v2.53.0
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./load-test/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    networks:
+      - diameter-net
+    profiles:
+      - load-test
+
+  # ── Grafana (real-time dashboard) ─────────────────────────────────────────
+  grafana:
+    image: grafana/grafana:11.1.0
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: "telecom"
+      GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH: "/var/lib/grafana/dashboards/load-test.json"
+    volumes:
+      - ./load-test/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./load-test/grafana/dashboards:/var/lib/grafana/dashboards:ro
+    depends_on:
+      - prometheus
+    networks:
+      - diameter-net
+    profiles:
+      - load-test

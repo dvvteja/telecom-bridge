@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  JDiameter Stack Configuration — Credit-Control Client (Ro/Gy, RFC 4006)
+  =========================================================================
+  This XML is loaded by JDiameterStackManager via XMLConfiguration.
+  It defines:
+    - Local peer identity (gateway node)
+    - Application support (Credit-Control, App-ID=4)
+    - TCP peer table (the simulator)
+    - FSM timers (Tc, Tw, reconnect)
+    - Session / routing parameters
+
+  Environment variable overrides applied by JDiameterStackManager at startup:
+    DIAMETER_HOST → localPeer hostname
+    DIAMETER_PORT → peer connection port (3868)
+
+  References:
+    RFC 6733 §6 (Diameter State Machine)
+    RFC 6733 §5.3 (CER/CEA)
+    RFC 6733 §5.5 (DWR/DWA)
+    RFC 4006 §5 (Credit-Control Application)
+-->
+<Configuration xmlns="http://www.jdiameter.org/jdiameter-server">
+
+    <!-- ── Local Peer (Gateway Node Identity) ──────────────────────────────── -->
+    <LocalPeer>
+        <!--
+          URI format: "aaa://host:port" for TCP, "aaas://host:port" for TLS
+          Override via DIAMETER_ORIGIN_HOST env var or application.properties
+        -->
+        <URI value="aaa://gateway.telecombridge.local:3869"/>
+
+        <!-- Realm this node belongs to -->
+        <Realm value="telecombridge.local"/>
+
+        <!-- Product name sent in CER -->
+        <ProductName value="TelecomBridge-QuarkusGateway"/>
+
+        <!-- Firmware revision -->
+        <FirmwareRevision value="1"/>
+
+        <!-- Vendor identifier (0 = IETF) -->
+        <VendorID value="0"/>
+
+        <!--
+          Application IDs this peer supports.
+          Auth-Application-Id=4 = Credit-Control (RFC 4006, Ro/Gy)
+        -->
+        <Applications>
+            <ApplicationID>
+                <VendorId value="0"/>
+                <AuthApplId value="4"/>
+                <AcctApplId value="0"/>
+            </ApplicationID>
+        </Applications>
+    </LocalPeer>
+
+    <!-- ── Peer Table (Static Peers / OCS Simulator) ───────────────────────── -->
+    <Network>
+        <Peers>
+            <!--
+              The Diameter simulator peer.
+              rating=1 = highest priority (only one peer for this demo).
+              ip="simulator" resolves via Docker DNS in compose network.
+            -->
+            <Peer name="aaa://simulator.telecombridge.local:3868"
+                  attempt_connect="true"
+                  rating="1"/>
+        </Peers>
+
+        <!--
+          Realm routing table.
+          All Credit-Control (app-id=4) traffic for telecombridge.local
+          is forwarded to the simulator peer above.
+        -->
+        <Realms>
+            <Realm name="telecombridge.local"
+                   peers="aaa://simulator.telecombridge.local:3868"
+                   local_action="LOCAL"
+                   dynamic="false"
+                   exp_time="1">
+                <ApplicationID>
+                    <VendorId value="0"/>
+                    <AuthApplId value="4"/>
+                    <AcctApplId value="0"/>
+                </ApplicationID>
+            </Realm>
+        </Realms>
+    </Network>
+
+    <!-- ── Stack Parameters ────────────────────────────────────────────────── -->
+    <Parameters>
+        <!--
+          AcceptUndefinedPeer: allow connections from peers not in the table.
+          false = strict (production-ready).
+        -->
+        <AcceptUndefinedPeer value="false"/>
+
+        <!--
+          DuplicateProtection: detect duplicate requests (prevents replay attacks).
+          true = enabled.
+        -->
+        <DuplicateProtection value="true"/>
+
+        <!--
+          DuplicateTimer: how long to track duplicate message IDs (ms).
+          4 minutes per RFC 6733 §9.
+        -->
+        <DuplicateTimer value="240000"/>
+
+        <!--
+          DuplicateSize: maximum number of tracked request IDs.
+        -->
+        <DuplicateSize value="5000"/>
+
+        <!--
+          UseUriAsFqdn: use the peer URI as the Fully Qualified Domain Name
+          in CER/CEA instead of resolving hostname separately.
+        -->
+        <UseUriAsFqdn value="true"/>
+
+        <!--
+          QueueSize: internal message processing queue depth.
+        -->
+        <QueueSize value="10000"/>
+
+        <!--
+          MessageTimeOut: Diameter-level message timeout (ms).
+          Note: Application-level CCR timeout is controlled separately
+          via diameter.request-timeout-ms in application.properties.
+        -->
+        <MessageTimeOut value="60000"/>
+
+        <!--
+          StopTimeOut: graceful shutdown timeout (ms).
+        -->
+        <StopTimeOut value="10000"/>
+
+        <!--
+          CEATimeOut: timeout waiting for CEA after sending CER (ms).
+        -->
+        <CEATimeOut value="10000"/>
+
+        <!--
+          IACTimeOut: Initiating connection timeout (ms).
+        -->
+        <IACTimeOut value="10000"/>
+
+        <!--
+          DWATimeOut: timeout for Device-Watchdog-Answer (ms).
+          RFC 6733 §5.5.3 recommends >2× the Tw timer.
+        -->
+        <DWATimeOut value="10000"/>
+
+        <!--
+          DPATimeOut: timeout for Disconnect-Peer-Answer (ms).
+        -->
+        <DPATimeOut value="5000"/>
+
+        <!--
+          RecTimeOut: reconnect timer (ms) — matches diameter.reconnect-delay-seconds * 1000.
+        -->
+        <RecTimeOut value="5000"/>
+
+        <!-- Concurrent processing configuration -->
+        <Concurrent>
+            <Entity name="ThreadGroup" size="64"/>
+            <Entity name="ProcessingMessageTimer" size="1"/>
+            <Entity name="DuplicationMessageTimer" size="1"/>
+            <Entity name="RedirectMessageTimer" size="1"/>
+            <Entity name="PeerOverloadTimer" size="1"/>
+            <Entity name="ConnectionTimer" size="1"/>
+            <Entity name="StatisticTimer" size="1"/>
+            <Entity name="ApplicationSession" size="16"/>
+        </Concurrent>
+    </Parameters>
+
+    <!-- ── Extensions (SPI providers loaded by JDiameter) ─────────────────── -->
+    <Extensions>
+        <MetaData class="org.jdiameter.client.impl.MetaDataImpl"/>
+        <MessageParser class="org.jdiameter.client.impl.parser.MessageParser"/>
+        <ElementParser class="org.jdiameter.client.impl.parser.ElementParser"/>
+        <RoutingEngine class="org.jdiameter.client.impl.router.RouterImpl"/>
+        <PeerFSM class="org.jdiameter.client.impl.fsm.FsmFactoryImpl"/>
+        <TCPTransportClient class="org.jdiameter.client.impl.transport.tcp.TCPClientConnection"/>
+        <SessionDatasource class="org.jdiameter.client.impl.SessionDatasourceImpl"/>
+        <TimerFacility class="org.jdiameter.client.impl.TimerFacilityImpl"/>
+        <StatisticManager class="org.jdiameter.client.impl.StatisticManagerImpl"/>
+        <ConcurrentFactory class="org.jdiameter.common.impl.concurrent.ConcurrentFactory"/>
+        <PeerController class="org.jdiameter.client.impl.controller.PeerTableImpl"/>
+        <RealmController class="org.jdiameter.client.impl.controller.RealmTableImpl"/>
+        <SessionFactory class="org.jdiameter.client.impl.SessionFactoryImpl"/>
+        <PeerHook class="org.jdiameter.client.impl.GMPeerHook"/>
+    </Extensions>
+
+</Configuration>

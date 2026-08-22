@@ -1,0 +1,196 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: telecom-gateway-quarkus
+  namespace: telecom
+  labels:
+    app: telecom-gateway-quarkus
+    version: "1.0.0"
+    runtime: quarkus
+spec:
+  replicas: 2           # Base replica count; HPA will scale from 2 → 20
+  selector:
+    matchLabels:
+      app: telecom-gateway-quarkus
+  template:
+    metadata:
+      labels:
+        app: telecom-gateway-quarkus
+        version: "1.0.0"
+      annotations:
+        # Prometheus scrape annotations — autodiscovery without a ServiceMonitor
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9000"
+        prometheus.io/path: "/q/metrics"
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+        - name: gateway
+          image: telecom-bridge/gateway-quarkus:1.0.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+            - name: management
+              containerPort: 9000
+              protocol: TCP
+          env:
+            - name: DIAMETER_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: telecom-diameter-config
+                  key: diameter.server-host
+            - name: DIAMETER_PORT
+              value: "3868"
+            - name: JAVA_OPTS
+              value: >-
+                -XX:+UseContainerSupport
+                -XX:MaxRAMPercentage=70.0
+                -XX:+UseG1GC
+                -Djava.security.egd=file:/dev/./urandom
+
+          # ── Resource Limits (key HPA input) ────────────────────────────
+          resources:
+            requests:
+              memory: "128Mi"   # Quarkus cold start heap
+              cpu: "100m"
+            limits:
+              memory: "256Mi"   # 50% of Spring Boot equivalent (512Mi)
+              cpu: "500m"
+
+          # ── Liveness Probe — restart pod if JVM hangs ─────────────────
+          livenessProbe:
+            httpGet:
+              path: /q/health/live
+              port: management    # port 9000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            failureThreshold: 3
+
+          # ── Readiness Probe — route traffic only when Diameter OPEN ───
+          readinessProbe:
+            httpGet:
+              path: /q/health/ready
+              port: management    # port 9000
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            failureThreshold: 3
+
+          # ── Startup Probe — give JDiameter time to complete CER/CEA ──
+          startupProbe:
+            httpGet:
+              path: /q/health/ready
+              port: management
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            failureThreshold: 6   # 5s×6 = 30s max startup window
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: telecom-gateway-quarkus
+  namespace: telecom
+  labels:
+    app: telecom-gateway-quarkus
+spec:
+  selector:
+    app: telecom-gateway-quarkus
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+      protocol: TCP
+    - name: management
+      port: 9000
+      targetPort: 9000
+      protocol: TCP
+  type: ClusterIP
+
+---
+# ── Horizontal Pod Autoscaler ─────────────────────────────────────────────────
+# Scales based on CPU utilisation (built-in) and a custom Diameter CCR metric.
+# Quarkus's /q/metrics (Prometheus format) feeds the custom metrics adapter.
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: telecom-gateway-quarkus-hpa
+  namespace: telecom
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: telecom-gateway-quarkus
+
+  minReplicas: 2
+  maxReplicas: 20
+
+  metrics:
+    # ── CPU-based scaling (built-in, no adapter needed) ───────────────────
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 60   # scale up when avg CPU > 60%
+
+    # ── Memory-based scaling ──────────────────────────────────────────────
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 75
+
+    # ── Custom metric: Diameter CCR rate (TPS) ────────────────────────────
+    # Requires Prometheus Adapter (k8s.io/metrics-server extension).
+    # Rule in prometheus-adapter ConfigMap:
+    #   metricsQuery: 'rate(diameter_ccr_sent_total[1m])'
+    - type: Pods
+      pods:
+        metric:
+          name: diameter_ccr_sent_per_second   # mapped from diameter.ccr.sent
+        target:
+          type: AverageValue
+          averageValue: "50"    # scale up when avg TPS per pod > 50
+
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: 30   # react quickly to traffic bursts
+      policies:
+        - type: Pods
+          value: 4
+          periodSeconds: 60            # add up to 4 pods per minute
+    scaleDown:
+      stabilizationWindowSeconds: 300  # wait 5 min before scaling down
+      policies:
+        - type: Pods
+          value: 2
+          periodSeconds: 60            # remove at most 2 pods per minute
+
+---
+# ── ConfigMap for Diameter connection settings ────────────────────────────────
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: telecom-diameter-config
+  namespace: telecom
+data:
+  diameter.server-host: "diameter-simulator.telecom.svc.cluster.local"
+  diameter.server-port: "3868"
+  diameter.origin-realm: "telecombridge.local"
+  diameter.request-timeout-ms: "5000"
+
+---
+# ── PodDisruptionBudget — maintain at least 1 pod during rolling updates ──────
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: telecom-gateway-quarkus-pdb
+  namespace: telecom
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: telecom-gateway-quarkus

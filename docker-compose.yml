@@ -23,7 +23,7 @@ services:
     mem_limit: 256m
     cpus: "0.5"
 
-  # ── REST Gateway ─────────────────────────────────────────────────────────
+  # ── REST Gateway (Spring Boot + Netty custom Diameter) ───────────────────
   gateway:
     build:
       context: .
@@ -54,6 +54,46 @@ services:
     restart: unless-stopped
     mem_limit: 512m
     cpus: "1.0"
+
+  # ── REST Gateway (Quarkus + JDiameter Stack) ─────────────────────────────
+  # Runs on host port 8081 to coexist with the Spring Boot gateway on 8080.
+  # Key advantages:
+  #   - mem_limit: 256m  (vs 512m for Spring Boot — 50% reduction)
+  #   - Startup: ~1.5s   (vs ~5s for Spring Boot)
+  #   - Health: /q/health/ready — native HPA-compatible readiness probe
+  #   - Metrics: /q/metrics     — Prometheus scrape endpoint
+  gateway-quarkus:
+    build:
+      context: .
+      dockerfile: gateway-quarkus/Dockerfile
+    image: telecom-bridge/gateway-quarkus:1.0.0
+    container_name: telecom-gateway-quarkus
+    ports:
+      - "8081:8080"    # REST API
+      - "9001:9000"    # Management (health + metrics)
+    environment:
+      DIAMETER_HOST: simulator
+      DIAMETER_PORT: "3868"
+      JAVA_OPTS: >-
+        -XX:+UseContainerSupport
+        -XX:MaxRAMPercentage=70.0
+        -XX:+UseG1GC
+        -Djava.security.egd=file:/dev/./urandom
+    healthcheck:
+      # Quarkus readiness probe — stack must have completed CER/CEA handshake
+      test: ["CMD", "wget", "-qO-", "http://localhost:9000/q/health/ready"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    depends_on:
+      simulator:
+        condition: service_healthy
+    networks:
+      - diameter-net
+    restart: unless-stopped
+    mem_limit: 256m      # ← 50% less than Spring Boot gateway
+    cpus: "0.5"
 
 networks:
   diameter-net:

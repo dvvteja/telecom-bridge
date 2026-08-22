@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.telecombridge</groupId>
+        <artifactId>telecom-bridge</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <artifactId>gateway-quarkus</artifactId>
+    <name>Telecom-Bridge REST-to-Diameter Gateway (Quarkus + JDiameter)</name>
+    <description>
+        Quarkus 3.x REST gateway bridging HTTP to Diameter Ro/Gy using the JDiameter stack.
+        Replaces Spring Boot for lower memory footprint and HPA-ready health probes.
+    </description>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
+        <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
+        <!-- Skip Quarkus augmentation during plain 'mvn package' when Quarkus plugin not configured -->
+        <skipITs>false</skipITs>
+    </properties>
+
+    <dependencies>
+        <!-- ─── Quarkus Runtime ─────────────────────────────────────────────── -->
+
+        <!-- JAX-RS + Jackson REST layer -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-rest</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-rest-jackson</artifactId>
+        </dependency>
+
+        <!-- Bean Validation (jakarta.validation) -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-hibernate-validator</artifactId>
+        </dependency>
+
+        <!-- SmallRye Health — exposes /q/health/live and /q/health/ready for HPA -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-smallrye-health</artifactId>
+        </dependency>
+
+        <!-- Micrometer + Prometheus metrics -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-micrometer-registry-prometheus</artifactId>
+        </dependency>
+
+        <!-- Mutiny — reactive programming model used by TelecomApiSimulatorService -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-mutiny</artifactId>
+        </dependency>
+
+        <!-- ─── JDiameter Stack (RestComm) ─────────────────────────────────── -->
+
+        <!-- JDiameter public API — Stack, Session, ApplicationId, etc. -->
+        <dependency>
+            <groupId>org.jdiameter</groupId>
+            <artifactId>jdiameter-api</artifactId>
+            <version>${jdiameter.version}</version>
+        </dependency>
+
+        <!-- JDiameter implementation (SPI provider for the API) -->
+        <dependency>
+            <groupId>org.jdiameter</groupId>
+            <artifactId>jdiameter-impl</artifactId>
+            <version>${jdiameter.version}</version>
+        </dependency>
+
+        <!-- ─── Shared Diameter codec (common module) ──────────────────────── -->
+        <dependency>
+            <groupId>com.telecombridge</groupId>
+            <artifactId>common</artifactId>
+        </dependency>
+
+        <!-- ─── Logging ─────────────────────────────────────────────────────── -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-logging-json</artifactId>
+        </dependency>
+
+        <!-- ─── Testing ─────────────────────────────────────────────────────── -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-junit5</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- Simulator for integration tests -->
+        <dependency>
+            <groupId>com.telecombridge</groupId>
+            <artifactId>simulator</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Quarkus Maven Plugin — handles augmentation, fast-jar packaging -->
+            <plugin>
+                <groupId>${quarkus.platform.group-id}</groupId>
+                <artifactId>quarkus-maven-plugin</artifactId>
+                <version>${quarkus.platform.version}</version>
+                <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>build</goal>
+                            <goal>generate-code</goal>
+                            <goal>generate-code-tests</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <systemPropertyVariables>
+                        <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
+                        <maven.home>${maven.home}</maven.home>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

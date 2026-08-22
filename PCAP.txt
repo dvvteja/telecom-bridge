@@ -1,0 +1,739 @@
+No.     Time           Source                Destination           Protocol Length Info
+      1 0.000000       10.44.24.6            10.44.24.3            TCP      80     50008 → 31021 [SYN] Seq=0 Win=64860 Len=0 MSS=1410 SACK_PERM TSval=545290586 TSecr=0 WS=128
+
+Frame 1: Packet, 80 bytes on wire (640 bits), 80 bytes captured (640 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 50008, Dst Port: 31021, Seq: 0, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+      2 0.000000       10.44.24.6            10.44.24.3            TCP      80     [TCP Retransmission] 50008 → 31021 [SYN] Seq=0 Win=64860 Len=0 MSS=1410 SACK_PERM TSval=545290586 TSecr=0 WS=128
+
+Frame 2: Packet, 80 bytes on wire (640 bits), 80 bytes captured (640 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 50008, Dst Port: 31021, Seq: 0, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+      3 0.000000       10.44.24.6            10.44.24.3            TCP      80     [TCP Retransmission] 50008 → 31021 [SYN] Seq=0 Win=64860 Len=0 MSS=1410 SACK_PERM TSval=545290586 TSecr=0 WS=128
+
+Frame 3: Packet, 80 bytes on wire (640 bits), 80 bytes captured (640 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 50008, Dst Port: 31021, Seq: 0, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+      4 0.000079       10.44.24.3            10.44.24.6            TCP      80     31021 → 50008 [SYN, ACK] Seq=0 Ack=1 Win=65160 Len=0 MSS=1460 SACK_PERM TSval=375240791 TSecr=545290586 WS=128
+
+Frame 4: Packet, 80 bytes on wire (640 bits), 80 bytes captured (640 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 50008, Seq: 0, Ack: 1, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+      5 0.000081       10.44.24.3            10.44.24.6            TCP      80     [TCP Retransmission] 31021 → 50008 [SYN, ACK] Seq=0 Ack=1 Win=65160 Len=0 MSS=1460 SACK_PERM TSval=375240791 TSecr=545290586 WS=128
+
+Frame 5: Packet, 80 bytes on wire (640 bits), 80 bytes captured (640 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 50008, Seq: 0, Ack: 1, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+      6 0.000084       10.44.24.3            10.44.24.6            TCP      80     [TCP Retransmission] 31021 → 50008 [SYN, ACK] Seq=0 Ack=1 Win=65160 Len=0 MSS=1460 SACK_PERM TSval=375240791 TSecr=545290586 WS=128
+
+Frame 6: Packet, 80 bytes on wire (640 bits), 80 bytes captured (640 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 50008, Seq: 0, Ack: 1, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+      7 0.000171       10.44.24.6            10.44.24.3            TCP      72     50008 → 31021 [ACK] Seq=1 Ack=1 Win=64896 Len=0 TSval=545290587 TSecr=375240791
+
+Frame 7: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 50008, Dst Port: 31021, Seq: 1, Ack: 1, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+      8 0.000171       10.44.24.6            10.44.24.3            TCP      72     [TCP Dup ACK 7#1] 50008 → 31021 [ACK] Seq=1 Ack=1 Win=64896 Len=0 TSval=545290587 TSecr=375240791
+
+Frame 8: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 50008, Dst Port: 31021, Seq: 1, Ack: 1, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+      9 0.000171       10.44.24.6            10.44.24.3            TCP      72     [TCP Dup ACK 7#2] 50008 → 31021 [ACK] Seq=1 Ack=1 Win=64896 Len=0 TSval=545290587 TSecr=375240791
+
+Frame 9: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 50008, Dst Port: 31021, Seq: 1, Ack: 1, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     10 0.001854       10.44.24.6            10.44.24.3            HTTP/JSON 1701   POST /in/get-account-info HTTP/1.1 , JSON (application/json)
+
+Frame 10: Packet, 1701 bytes on wire (13608 bits), 1701 bytes captured (13608 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 50008, Dst Port: 31021, Seq: 1, Ack: 1, Len: 1629
+Hypertext Transfer Protocol
+JavaScript Object Notation: application/json
+
+No.     Time           Source                Destination           Protocol Length Info
+     11 0.001854       10.44.24.6            10.44.24.3            TCP      1701   [TCP Retransmission] 50008 → 31021 [PSH, ACK] Seq=1 Ack=1 Win=64896 Len=1629 TSval=545290588 TSecr=375240791
+
+Frame 11: Packet, 1701 bytes on wire (13608 bits), 1701 bytes captured (13608 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 50008, Dst Port: 31021, Seq: 1, Ack: 1, Len: 1629
+
+No.     Time           Source                Destination           Protocol Length Info
+     12 0.001854       10.44.24.6            10.44.24.3            TCP      1701   [TCP Retransmission] 50008 → 31021 [PSH, ACK] Seq=1 Ack=1 Win=64896 Len=1629 TSval=545290588 TSecr=375240791
+
+Frame 12: Packet, 1701 bytes on wire (13608 bits), 1701 bytes captured (13608 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 50008, Dst Port: 31021, Seq: 1, Ack: 1, Len: 1629
+
+No.     Time           Source                Destination           Protocol Length Info
+     13 0.001867       10.44.24.3            10.44.24.6            TCP      72     31021 → 50008 [ACK] Seq=1 Ack=1630 Win=63616 Len=0 TSval=375240793 TSecr=545290588
+
+Frame 13: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 50008, Seq: 1, Ack: 1630, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     14 0.001867       10.44.24.3            10.44.24.6            TCP      72     [TCP Dup ACK 13#1] 31021 → 50008 [ACK] Seq=1 Ack=1630 Win=63616 Len=0 TSval=375240793 TSecr=545290588
+
+Frame 14: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 50008, Seq: 1, Ack: 1630, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     15 0.001868       10.44.24.3            10.44.24.6            TCP      72     [TCP Dup ACK 13#2] 31021 → 50008 [ACK] Seq=1 Ack=1630 Win=63616 Len=0 TSval=375240793 TSecr=545290588
+
+Frame 15: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 50008, Seq: 1, Ack: 1630, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     16 0.071169       10.44.24.6            10.44.24.3            TCP      80     19924 → 31021 [SYN] Seq=0 Win=64860 Len=0 MSS=1410 SACK_PERM TSval=545290658 TSecr=0 WS=128
+
+Frame 16: Packet, 80 bytes on wire (640 bits), 80 bytes captured (640 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 19924, Dst Port: 31021, Seq: 0, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     17 0.071169       10.44.24.6            10.44.24.3            TCP      80     [TCP Retransmission] 19924 → 31021 [SYN] Seq=0 Win=64860 Len=0 MSS=1410 SACK_PERM TSval=545290658 TSecr=0 WS=128
+
+Frame 17: Packet, 80 bytes on wire (640 bits), 80 bytes captured (640 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 19924, Dst Port: 31021, Seq: 0, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     18 0.071169       10.44.24.6            10.44.24.3            TCP      80     [TCP Retransmission] 19924 → 31021 [SYN] Seq=0 Win=64860 Len=0 MSS=1410 SACK_PERM TSval=545290658 TSecr=0 WS=128
+
+Frame 18: Packet, 80 bytes on wire (640 bits), 80 bytes captured (640 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 19924, Dst Port: 31021, Seq: 0, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     19 0.071210       10.44.24.3            10.44.24.6            TCP      80     31021 → 19924 [SYN, ACK] Seq=0 Ack=1 Win=65160 Len=0 MSS=1460 SACK_PERM TSval=375240862 TSecr=545290658 WS=128
+
+Frame 19: Packet, 80 bytes on wire (640 bits), 80 bytes captured (640 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 19924, Seq: 0, Ack: 1, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     20 0.071211       10.44.24.3            10.44.24.6            TCP      80     [TCP Retransmission] 31021 → 19924 [SYN, ACK] Seq=0 Ack=1 Win=65160 Len=0 MSS=1460 SACK_PERM TSval=375240862 TSecr=545290658 WS=128
+
+Frame 20: Packet, 80 bytes on wire (640 bits), 80 bytes captured (640 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 19924, Seq: 0, Ack: 1, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     21 0.071212       10.44.24.3            10.44.24.6            TCP      80     [TCP Retransmission] 31021 → 19924 [SYN, ACK] Seq=0 Ack=1 Win=65160 Len=0 MSS=1460 SACK_PERM TSval=375240862 TSecr=545290658 WS=128
+
+Frame 21: Packet, 80 bytes on wire (640 bits), 80 bytes captured (640 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 19924, Seq: 0, Ack: 1, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     22 0.071407       10.44.24.6            10.44.24.3            TCP      72     19924 → 31021 [ACK] Seq=1 Ack=1 Win=64896 Len=0 TSval=545290658 TSecr=375240862
+
+Frame 22: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 19924, Dst Port: 31021, Seq: 1, Ack: 1, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     23 0.071407       10.44.24.6            10.44.24.3            TCP      72     [TCP Dup ACK 22#1] 19924 → 31021 [ACK] Seq=1 Ack=1 Win=64896 Len=0 TSval=545290658 TSecr=375240862
+
+Frame 23: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 19924, Dst Port: 31021, Seq: 1, Ack: 1, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     24 0.071407       10.44.24.6            10.44.24.3            TCP      72     [TCP Dup ACK 22#2] 19924 → 31021 [ACK] Seq=1 Ack=1 Win=64896 Len=0 TSval=545290658 TSecr=375240862
+
+Frame 24: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 19924, Dst Port: 31021, Seq: 1, Ack: 1, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     25 0.072605       10.44.24.6            10.44.24.3            HTTP/JSON 1701   POST /in/get-account-info HTTP/1.1 , JSON (application/json)
+
+Frame 25: Packet, 1701 bytes on wire (13608 bits), 1701 bytes captured (13608 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 19924, Dst Port: 31021, Seq: 1, Ack: 1, Len: 1629
+Hypertext Transfer Protocol
+JavaScript Object Notation: application/json
+
+No.     Time           Source                Destination           Protocol Length Info
+     26 0.072605       10.44.24.6            10.44.24.3            TCP      1701   [TCP Retransmission] 19924 → 31021 [PSH, ACK] Seq=1 Ack=1 Win=64896 Len=1629 TSval=545290659 TSecr=375240862
+
+Frame 26: Packet, 1701 bytes on wire (13608 bits), 1701 bytes captured (13608 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 19924, Dst Port: 31021, Seq: 1, Ack: 1, Len: 1629
+
+No.     Time           Source                Destination           Protocol Length Info
+     27 0.072605       10.44.24.6            10.44.24.3            TCP      1701   [TCP Retransmission] 19924 → 31021 [PSH, ACK] Seq=1 Ack=1 Win=64896 Len=1629 TSval=545290659 TSecr=375240862
+
+Frame 27: Packet, 1701 bytes on wire (13608 bits), 1701 bytes captured (13608 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 19924, Dst Port: 31021, Seq: 1, Ack: 1, Len: 1629
+
+No.     Time           Source                Destination           Protocol Length Info
+     28 0.072618       10.44.24.3            10.44.24.6            TCP      72     31021 → 19924 [ACK] Seq=1 Ack=1630 Win=63616 Len=0 TSval=375240863 TSecr=545290659
+
+Frame 28: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 19924, Seq: 1, Ack: 1630, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     29 0.072619       10.44.24.3            10.44.24.6            TCP      72     [TCP Dup ACK 28#1] 31021 → 19924 [ACK] Seq=1 Ack=1630 Win=63616 Len=0 TSval=375240863 TSecr=545290659
+
+Frame 29: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 19924, Seq: 1, Ack: 1630, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     30 0.072619       10.44.24.3            10.44.24.6            TCP      72     [TCP Dup ACK 28#2] 31021 → 19924 [ACK] Seq=1 Ack=1630 Win=63616 Len=0 TSval=375240863 TSecr=545290659
+
+Frame 30: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 19924, Seq: 1, Ack: 1630, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     31 1.008231       10.44.24.3            10.44.24.6            TCP      5195   31021 → 50008 [PSH, ACK] Seq=1 Ack=1630 Win=63616 Len=5123 TSval=375241799 TSecr=545290588 [TCP PDU reassembled in 37]
+
+Frame 31: Packet, 5195 bytes on wire (41560 bits), 5195 bytes captured (41560 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 50008, Seq: 1, Ack: 1630, Len: 5123
+
+No.     Time           Source                Destination           Protocol Length Info
+     32 1.008235       10.44.24.3            10.44.24.6            TCP      5195   [TCP Retransmission] 31021 → 50008 [PSH, ACK] Seq=1 Ack=1630 Win=63616 Len=5123 TSval=375241799 TSecr=545290588
+
+Frame 32: Packet, 5195 bytes on wire (41560 bits), 5195 bytes captured (41560 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 50008, Seq: 1, Ack: 1630, Len: 5123
+
+No.     Time           Source                Destination           Protocol Length Info
+     33 1.008237       10.44.24.3            10.44.24.6            TCP      5195   [TCP Retransmission] 31021 → 50008 [PSH, ACK] Seq=1 Ack=1630 Win=63616 Len=5123 TSval=375241799 TSecr=545290588
+
+Frame 33: Packet, 5195 bytes on wire (41560 bits), 5195 bytes captured (41560 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 50008, Seq: 1, Ack: 1630, Len: 5123
+
+No.     Time           Source                Destination           Protocol Length Info
+     34 1.008508       10.44.24.6            10.44.24.3            TCP      72     50008 → 31021 [ACK] Seq=1630 Ack=5124 Win=65664 Len=0 TSval=545291595 TSecr=375241799
+
+Frame 34: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 50008, Dst Port: 31021, Seq: 1630, Ack: 5124, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     35 1.008508       10.44.24.6            10.44.24.3            TCP      72     [TCP Dup ACK 34#1] 50008 → 31021 [ACK] Seq=1630 Ack=5124 Win=65664 Len=0 TSval=545291595 TSecr=375241799
+
+Frame 35: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 50008, Dst Port: 31021, Seq: 1630, Ack: 5124, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     36 1.008508       10.44.24.6            10.44.24.3            TCP      72     [TCP Dup ACK 34#2] 50008 → 31021 [ACK] Seq=1630 Ack=5124 Win=65664 Len=0 TSval=545291595 TSecr=375241799
+
+Frame 36: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 50008, Dst Port: 31021, Seq: 1630, Ack: 5124, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     37 1.008658       10.44.24.3            10.44.24.6            HTTP/JSON 77     HTTP/1.1 200  , JSON (application/json)
+
+Frame 37: Packet, 77 bytes on wire (616 bits), 77 bytes captured (616 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 50008, Seq: 5124, Ack: 1630, Len: 5
+[4 Reassembled TCP Segments (5128 bytes): #31(5123), #37(5), #38(5), #39(5)]
+Hypertext Transfer Protocol, has 2 chunks (including last chunk)
+JavaScript Object Notation: application/json
+
+No.     Time           Source                Destination           Protocol Length Info
+     38 1.008659       10.44.24.3            10.44.24.6            TCP      77     [TCP Fast Retransmission] 31021 → 50008 [PSH, ACK] Seq=5124 Ack=1630 Win=63616 Len=5 TSval=375241799 TSecr=545291595 [TCP PDU reassembled in 37]
+
+Frame 38: Packet, 77 bytes on wire (616 bits), 77 bytes captured (616 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 50008, Seq: 5124, Ack: 1630, Len: 5
+
+No.     Time           Source                Destination           Protocol Length Info
+     39 1.008660       10.44.24.3            10.44.24.6            TCP      77     [TCP Fast Retransmission] 31021 → 50008 [PSH, ACK] Seq=5124 Ack=1630 Win=63616 Len=5 TSval=375241799 TSecr=545291595 [TCP PDU reassembled in 37]
+
+Frame 39: Packet, 77 bytes on wire (616 bits), 77 bytes captured (616 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 50008, Seq: 5124, Ack: 1630, Len: 5
+
+No.     Time           Source                Destination           Protocol Length Info
+     40 1.008774       10.44.24.6            10.44.24.3            TCP      72     50008 → 31021 [ACK] Seq=1630 Ack=5129 Win=65664 Len=0 TSval=545291595 TSecr=375241799
+
+Frame 40: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 50008, Dst Port: 31021, Seq: 1630, Ack: 5129, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     41 1.008774       10.44.24.6            10.44.24.3            TCP      72     [TCP Dup ACK 40#1] 50008 → 31021 [ACK] Seq=1630 Ack=5129 Win=65664 Len=0 TSval=545291595 TSecr=375241799
+
+Frame 41: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 50008, Dst Port: 31021, Seq: 1630, Ack: 5129, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     42 1.008774       10.44.24.6            10.44.24.3            TCP      72     [TCP Dup ACK 40#2] 50008 → 31021 [ACK] Seq=1630 Ack=5129 Win=65664 Len=0 TSval=545291595 TSecr=375241799
+
+Frame 42: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 50008, Dst Port: 31021, Seq: 1630, Ack: 5129, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     43 1.076433       10.44.24.3            10.44.24.6            TCP      5195   31021 → 19924 [PSH, ACK] Seq=1 Ack=1630 Win=63616 Len=5123 TSval=375241867 TSecr=545290659 [TCP PDU reassembled in 49]
+
+Frame 43: Packet, 5195 bytes on wire (41560 bits), 5195 bytes captured (41560 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 19924, Seq: 1, Ack: 1630, Len: 5123
+
+No.     Time           Source                Destination           Protocol Length Info
+     44 1.076437       10.44.24.3            10.44.24.6            TCP      5195   [TCP Retransmission] 31021 → 19924 [PSH, ACK] Seq=1 Ack=1630 Win=63616 Len=5123 TSval=375241867 TSecr=545290659
+
+Frame 44: Packet, 5195 bytes on wire (41560 bits), 5195 bytes captured (41560 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 19924, Seq: 1, Ack: 1630, Len: 5123
+
+No.     Time           Source                Destination           Protocol Length Info
+     45 1.076439       10.44.24.3            10.44.24.6            TCP      5195   [TCP Retransmission] 31021 → 19924 [PSH, ACK] Seq=1 Ack=1630 Win=63616 Len=5123 TSval=375241867 TSecr=545290659
+
+Frame 45: Packet, 5195 bytes on wire (41560 bits), 5195 bytes captured (41560 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 19924, Seq: 1, Ack: 1630, Len: 5123
+
+No.     Time           Source                Destination           Protocol Length Info
+     46 1.076580       10.44.24.6            10.44.24.3            TCP      72     19924 → 31021 [ACK] Seq=1630 Ack=5124 Win=65664 Len=0 TSval=545291663 TSecr=375241867
+
+Frame 46: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 19924, Dst Port: 31021, Seq: 1630, Ack: 5124, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     47 1.076580       10.44.24.6            10.44.24.3            TCP      72     [TCP Dup ACK 46#1] 19924 → 31021 [ACK] Seq=1630 Ack=5124 Win=65664 Len=0 TSval=545291663 TSecr=375241867
+
+Frame 47: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 19924, Dst Port: 31021, Seq: 1630, Ack: 5124, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     48 1.076580       10.44.24.6            10.44.24.3            TCP      72     [TCP Dup ACK 46#2] 19924 → 31021 [ACK] Seq=1630 Ack=5124 Win=65664 Len=0 TSval=545291663 TSecr=375241867
+
+Frame 48: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 19924, Dst Port: 31021, Seq: 1630, Ack: 5124, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     49 1.076809       10.44.24.3            10.44.24.6            HTTP/JSON 77     HTTP/1.1 200  , JSON (application/json)
+
+Frame 49: Packet, 77 bytes on wire (616 bits), 77 bytes captured (616 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 19924, Seq: 5124, Ack: 1630, Len: 5
+[4 Reassembled TCP Segments (5128 bytes): #43(5123), #49(5), #50(5), #51(5)]
+Hypertext Transfer Protocol, has 2 chunks (including last chunk)
+JavaScript Object Notation: application/json
+
+No.     Time           Source                Destination           Protocol Length Info
+     50 1.076810       10.44.24.3            10.44.24.6            TCP      77     [TCP Fast Retransmission] 31021 → 19924 [PSH, ACK] Seq=5124 Ack=1630 Win=63616 Len=5 TSval=375241868 TSecr=545291663 [TCP PDU reassembled in 49]
+
+Frame 50: Packet, 77 bytes on wire (616 bits), 77 bytes captured (616 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 19924, Seq: 5124, Ack: 1630, Len: 5
+
+No.     Time           Source                Destination           Protocol Length Info
+     51 1.076810       10.44.24.3            10.44.24.6            TCP      77     [TCP Fast Retransmission] 31021 → 19924 [PSH, ACK] Seq=5124 Ack=1630 Win=63616 Len=5 TSval=375241868 TSecr=545291663 [TCP PDU reassembled in 49]
+
+Frame 51: Packet, 77 bytes on wire (616 bits), 77 bytes captured (616 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 19924, Seq: 5124, Ack: 1630, Len: 5
+
+No.     Time           Source                Destination           Protocol Length Info
+     52 1.076924       10.44.24.6            10.44.24.3            TCP      72     19924 → 31021 [ACK] Seq=1630 Ack=5129 Win=65664 Len=0 TSval=545291663 TSecr=375241868
+
+Frame 52: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 19924, Dst Port: 31021, Seq: 1630, Ack: 5129, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     53 1.076924       10.44.24.6            10.44.24.3            TCP      72     [TCP Dup ACK 52#1] 19924 → 31021 [ACK] Seq=1630 Ack=5129 Win=65664 Len=0 TSval=545291663 TSecr=375241868
+
+Frame 53: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 19924, Dst Port: 31021, Seq: 1630, Ack: 5129, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     54 1.076924       10.44.24.6            10.44.24.3            TCP      72     [TCP Dup ACK 52#2] 19924 → 31021 [ACK] Seq=1630 Ack=5129 Win=65664 Len=0 TSval=545291663 TSecr=375241868
+
+Frame 54: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 19924, Dst Port: 31021, Seq: 1630, Ack: 5129, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     55 12.561514      10.44.24.6            10.44.24.3            HTTP/JSON 1726   POST /in/get-account-info HTTP/1.1 , JSON (application/json)
+
+Frame 55: Packet, 1726 bytes on wire (13808 bits), 1726 bytes captured (13808 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 50008, Dst Port: 31021, Seq: 1630, Ack: 5129, Len: 1654
+Hypertext Transfer Protocol
+JavaScript Object Notation: application/json
+
+No.     Time           Source                Destination           Protocol Length Info
+     56 12.561514      10.44.24.6            10.44.24.3            TCP      1726   [TCP Retransmission] 50008 → 31021 [PSH, ACK] Seq=1630 Ack=5129 Win=65664 Len=1654 TSval=545303148 TSecr=375241799
+
+Frame 56: Packet, 1726 bytes on wire (13808 bits), 1726 bytes captured (13808 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 50008, Dst Port: 31021, Seq: 1630, Ack: 5129, Len: 1654
+
+No.     Time           Source                Destination           Protocol Length Info
+     57 12.561514      10.44.24.6            10.44.24.3            TCP      1726   [TCP Retransmission] 50008 → 31021 [PSH, ACK] Seq=1630 Ack=5129 Win=65664 Len=1654 TSval=545303148 TSecr=375241799
+
+Frame 57: Packet, 1726 bytes on wire (13808 bits), 1726 bytes captured (13808 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 50008, Dst Port: 31021, Seq: 1630, Ack: 5129, Len: 1654
+
+No.     Time           Source                Destination           Protocol Length Info
+     58 12.561572      10.44.24.3            10.44.24.6            TCP      72     31021 → 50008 [ACK] Seq=5129 Ack=3284 Win=62080 Len=0 TSval=375253352 TSecr=545303148
+
+Frame 58: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 50008, Seq: 5129, Ack: 3284, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     59 12.561574      10.44.24.3            10.44.24.6            TCP      72     [TCP Dup ACK 58#1] 31021 → 50008 [ACK] Seq=5129 Ack=3284 Win=62080 Len=0 TSval=375253352 TSecr=545303148
+
+Frame 59: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 50008, Seq: 5129, Ack: 3284, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     60 12.561575      10.44.24.3            10.44.24.6            TCP      72     [TCP Dup ACK 58#2] 31021 → 50008 [ACK] Seq=5129 Ack=3284 Win=62080 Len=0 TSval=375253352 TSecr=545303148
+
+Frame 60: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 50008, Seq: 5129, Ack: 3284, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     61 13.565808      10.44.24.3            10.44.24.6            TCP      5252   31021 → 50008 [PSH, ACK] Seq=5129 Ack=3284 Win=62080 Len=5180 TSval=375254357 TSecr=545303148 [TCP PDU reassembled in 67]
+
+Frame 61: Packet, 5252 bytes on wire (42016 bits), 5252 bytes captured (42016 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 50008, Seq: 5129, Ack: 3284, Len: 5180
+
+No.     Time           Source                Destination           Protocol Length Info
+     62 13.565812      10.44.24.3            10.44.24.6            TCP      5252   [TCP Retransmission] 31021 → 50008 [PSH, ACK] Seq=5129 Ack=3284 Win=62080 Len=5180 TSval=375254357 TSecr=545303148
+
+Frame 62: Packet, 5252 bytes on wire (42016 bits), 5252 bytes captured (42016 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 50008, Seq: 5129, Ack: 3284, Len: 5180
+
+No.     Time           Source                Destination           Protocol Length Info
+     63 13.565814      10.44.24.3            10.44.24.6            TCP      5252   [TCP Retransmission] 31021 → 50008 [PSH, ACK] Seq=5129 Ack=3284 Win=62080 Len=5180 TSval=375254357 TSecr=545303148
+
+Frame 63: Packet, 5252 bytes on wire (42016 bits), 5252 bytes captured (42016 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 50008, Seq: 5129, Ack: 3284, Len: 5180
+
+No.     Time           Source                Destination           Protocol Length Info
+     64 13.566060      10.44.24.6            10.44.24.3            TCP      72     50008 → 31021 [ACK] Seq=3284 Ack=10309 Win=65664 Len=0 TSval=545304152 TSecr=375254357
+
+Frame 64: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 50008, Dst Port: 31021, Seq: 3284, Ack: 10309, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     65 13.566060      10.44.24.6            10.44.24.3            TCP      72     [TCP Dup ACK 64#1] 50008 → 31021 [ACK] Seq=3284 Ack=10309 Win=65664 Len=0 TSval=545304152 TSecr=375254357
+
+Frame 65: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 50008, Dst Port: 31021, Seq: 3284, Ack: 10309, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     66 13.566060      10.44.24.6            10.44.24.3            TCP      72     [TCP Dup ACK 64#2] 50008 → 31021 [ACK] Seq=3284 Ack=10309 Win=65664 Len=0 TSval=545304152 TSecr=375254357
+
+Frame 66: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 50008, Dst Port: 31021, Seq: 3284, Ack: 10309, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     67 13.566189      10.44.24.3            10.44.24.6            HTTP/JSON 77     HTTP/1.1 200  , JSON (application/json)
+
+Frame 67: Packet, 77 bytes on wire (616 bits), 77 bytes captured (616 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 50008, Seq: 10309, Ack: 3284, Len: 5
+[4 Reassembled TCP Segments (5185 bytes): #61(5180), #67(5), #68(5), #69(5)]
+Hypertext Transfer Protocol, has 2 chunks (including last chunk)
+JavaScript Object Notation: application/json
+
+No.     Time           Source                Destination           Protocol Length Info
+     68 13.566189      10.44.24.3            10.44.24.6            TCP      77     [TCP Fast Retransmission] 31021 → 50008 [PSH, ACK] Seq=10309 Ack=3284 Win=62080 Len=5 TSval=375254357 TSecr=545304152 [TCP PDU reassembled in 67]
+
+Frame 68: Packet, 77 bytes on wire (616 bits), 77 bytes captured (616 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 50008, Seq: 10309, Ack: 3284, Len: 5
+
+No.     Time           Source                Destination           Protocol Length Info
+     69 13.566190      10.44.24.3            10.44.24.6            TCP      77     [TCP Fast Retransmission] 31021 → 50008 [PSH, ACK] Seq=10309 Ack=3284 Win=62080 Len=5 TSval=375254357 TSecr=545304152 [TCP PDU reassembled in 67]
+
+Frame 69: Packet, 77 bytes on wire (616 bits), 77 bytes captured (616 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 50008, Seq: 10309, Ack: 3284, Len: 5
+
+No.     Time           Source                Destination           Protocol Length Info
+     70 13.566291      10.44.24.6            10.44.24.3            TCP      72     50008 → 31021 [ACK] Seq=3284 Ack=10314 Win=65664 Len=0 TSval=545304153 TSecr=375254357
+
+Frame 70: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 50008, Dst Port: 31021, Seq: 3284, Ack: 10314, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     71 13.566291      10.44.24.6            10.44.24.3            TCP      72     [TCP Dup ACK 70#1] 50008 → 31021 [ACK] Seq=3284 Ack=10314 Win=65664 Len=0 TSval=545304153 TSecr=375254357
+
+Frame 71: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 50008, Dst Port: 31021, Seq: 3284, Ack: 10314, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     72 13.566291      10.44.24.6            10.44.24.3            TCP      72     [TCP Dup ACK 70#2] 50008 → 31021 [ACK] Seq=3284 Ack=10314 Win=65664 Len=0 TSval=545304153 TSecr=375254357
+
+Frame 72: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 50008, Dst Port: 31021, Seq: 3284, Ack: 10314, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     73 16.681507      10.44.24.6            10.44.24.3            HTTP/JSON 1722   POST /in/bundle-activate HTTP/1.1 , JSON (application/json)
+
+Frame 73: Packet, 1722 bytes on wire (13776 bits), 1722 bytes captured (13776 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 19924, Dst Port: 31021, Seq: 1630, Ack: 5129, Len: 1650
+Hypertext Transfer Protocol
+JavaScript Object Notation: application/json
+
+No.     Time           Source                Destination           Protocol Length Info
+     74 16.681507      10.44.24.6            10.44.24.3            TCP      1722   [TCP Retransmission] 19924 → 31021 [PSH, ACK] Seq=1630 Ack=5129 Win=65664 Len=1650 TSval=545307268 TSecr=375241868
+
+Frame 74: Packet, 1722 bytes on wire (13776 bits), 1722 bytes captured (13776 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 19924, Dst Port: 31021, Seq: 1630, Ack: 5129, Len: 1650
+
+No.     Time           Source                Destination           Protocol Length Info
+     75 16.681507      10.44.24.6            10.44.24.3            TCP      1722   [TCP Retransmission] 19924 → 31021 [PSH, ACK] Seq=1630 Ack=5129 Win=65664 Len=1650 TSval=545307268 TSecr=375241868
+
+Frame 75: Packet, 1722 bytes on wire (13776 bits), 1722 bytes captured (13776 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 19924, Dst Port: 31021, Seq: 1630, Ack: 5129, Len: 1650
+
+No.     Time           Source                Destination           Protocol Length Info
+     76 16.681603      10.44.24.3            10.44.24.6            TCP      72     31021 → 19924 [ACK] Seq=5129 Ack=3280 Win=62080 Len=0 TSval=375257472 TSecr=545307268
+
+Frame 76: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 19924, Seq: 5129, Ack: 3280, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     77 16.681608      10.44.24.3            10.44.24.6            TCP      72     [TCP Dup ACK 76#1] 31021 → 19924 [ACK] Seq=5129 Ack=3280 Win=62080 Len=0 TSval=375257472 TSecr=545307268
+
+Frame 77: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 19924, Seq: 5129, Ack: 3280, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     78 16.681612      10.44.24.3            10.44.24.6            TCP      72     [TCP Dup ACK 76#2] 31021 → 19924 [ACK] Seq=5129 Ack=3280 Win=62080 Len=0 TSval=375257472 TSecr=545307268
+
+Frame 78: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 19924, Seq: 5129, Ack: 3280, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     79 17.686456      10.44.24.3            10.44.24.6            TCP      2898   31021 → 19924 [PSH, ACK] Seq=5129 Ack=3280 Win=62080 Len=2826 TSval=375258477 TSecr=545307268 [TCP PDU reassembled in 85]
+
+Frame 79: Packet, 2898 bytes on wire (23184 bits), 2898 bytes captured (23184 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 19924, Seq: 5129, Ack: 3280, Len: 2826
+
+No.     Time           Source                Destination           Protocol Length Info
+     80 17.686461      10.44.24.3            10.44.24.6            TCP      2898   [TCP Retransmission] 31021 → 19924 [PSH, ACK] Seq=5129 Ack=3280 Win=62080 Len=2826 TSval=375258477 TSecr=545307268
+
+Frame 80: Packet, 2898 bytes on wire (23184 bits), 2898 bytes captured (23184 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 19924, Seq: 5129, Ack: 3280, Len: 2826
+
+No.     Time           Source                Destination           Protocol Length Info
+     81 17.686464      10.44.24.3            10.44.24.6            TCP      2898   [TCP Retransmission] 31021 → 19924 [PSH, ACK] Seq=5129 Ack=3280 Win=62080 Len=2826 TSval=375258477 TSecr=545307268
+
+Frame 81: Packet, 2898 bytes on wire (23184 bits), 2898 bytes captured (23184 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 19924, Seq: 5129, Ack: 3280, Len: 2826
+
+No.     Time           Source                Destination           Protocol Length Info
+     82 17.686633      10.44.24.6            10.44.24.3            TCP      72     19924 → 31021 [ACK] Seq=3280 Ack=7955 Win=67840 Len=0 TSval=545308273 TSecr=375258477
+
+Frame 82: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 19924, Dst Port: 31021, Seq: 3280, Ack: 7955, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     83 17.686633      10.44.24.6            10.44.24.3            TCP      72     [TCP Dup ACK 82#1] 19924 → 31021 [ACK] Seq=3280 Ack=7955 Win=67840 Len=0 TSval=545308273 TSecr=375258477
+
+Frame 83: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 19924, Dst Port: 31021, Seq: 3280, Ack: 7955, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     84 17.686633      10.44.24.6            10.44.24.3            TCP      72     [TCP Dup ACK 82#2] 19924 → 31021 [ACK] Seq=3280 Ack=7955 Win=67840 Len=0 TSval=545308273 TSecr=375258477
+
+Frame 84: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 19924, Dst Port: 31021, Seq: 3280, Ack: 7955, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     85 17.686854      10.44.24.3            10.44.24.6            HTTP/JSON 77     HTTP/1.1 200  , JSON (application/json)
+
+Frame 85: Packet, 77 bytes on wire (616 bits), 77 bytes captured (616 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 19924, Seq: 7955, Ack: 3280, Len: 5
+[4 Reassembled TCP Segments (2831 bytes): #79(2826), #85(5), #86(5), #87(5)]
+Hypertext Transfer Protocol, has 2 chunks (including last chunk)
+JavaScript Object Notation: application/json
+
+No.     Time           Source                Destination           Protocol Length Info
+     86 17.686854      10.44.24.3            10.44.24.6            TCP      77     [TCP Fast Retransmission] 31021 → 19924 [PSH, ACK] Seq=7955 Ack=3280 Win=62080 Len=5 TSval=375258478 TSecr=545308273 [TCP PDU reassembled in 85]
+
+Frame 86: Packet, 77 bytes on wire (616 bits), 77 bytes captured (616 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 19924, Seq: 7955, Ack: 3280, Len: 5
+
+No.     Time           Source                Destination           Protocol Length Info
+     87 17.686855      10.44.24.3            10.44.24.6            TCP      77     [TCP Fast Retransmission] 31021 → 19924 [PSH, ACK] Seq=7955 Ack=3280 Win=62080 Len=5 TSval=375258478 TSecr=545308273 [TCP PDU reassembled in 85]
+
+Frame 87: Packet, 77 bytes on wire (616 bits), 77 bytes captured (616 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.3, Dst: 10.44.24.6
+Transmission Control Protocol, Src Port: 31021, Dst Port: 19924, Seq: 7955, Ack: 3280, Len: 5
+
+No.     Time           Source                Destination           Protocol Length Info
+     88 17.686969      10.44.24.6            10.44.24.3            TCP      72     19924 → 31021 [ACK] Seq=3280 Ack=7960 Win=67840 Len=0 TSval=545308273 TSecr=375258478
+
+Frame 88: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 19924, Dst Port: 31021, Seq: 3280, Ack: 7960, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     89 17.686969      10.44.24.6            10.44.24.3            TCP      72     [TCP Dup ACK 88#1] 19924 → 31021 [ACK] Seq=3280 Ack=7960 Win=67840 Len=0 TSval=545308273 TSecr=375258478
+
+Frame 89: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 19924, Dst Port: 31021, Seq: 3280, Ack: 7960, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     90 17.686969      10.44.24.6            10.44.24.3            TCP      72     [TCP Dup ACK 88#2] 19924 → 31021 [ACK] Seq=3280 Ack=7960 Win=67840 Len=0 TSval=545308273 TSecr=375258478
+
+Frame 90: Packet, 72 bytes on wire (576 bits), 72 bytes captured (576 bits)
+Linux cooked capture v2
+Internet Protocol Version 4, Src: 10.44.24.6, Dst: 10.44.24.3
+Transmission Control Protocol, Src Port: 19924, Dst Port: 31021, Seq: 3280, Ack: 7960, Len: 0
